@@ -1,3 +1,4 @@
+"use client";
 import {
   Sidebar,
   SidebarContent,
@@ -6,9 +7,23 @@ import {
   SidebarHeader,
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
-import { Home, Plus, Package, ListOrdered, CheckCircle, XCircle, FileText, MoreHorizontal } from "lucide-react";
+import {
+  Home,
+  Plus,
+  Package,
+  ListOrdered,
+  CheckCircle,
+  XCircle,
+  FileText,
+  MoreHorizontal,
+} from "lucide-react";
+import { useSidebarStore } from "@/store/useSidebar";
 
 export function AppSidebar() {
+  const { setSidebar, sidebarItem } = useSidebarStore();
+
+  console.log("Current Sidebar Item:", sidebarItem);
+
   return (
     <Sidebar className="h-screen border-r shadow-sm">
       {/* Header */}
@@ -19,33 +34,51 @@ export function AppSidebar() {
       {/* Main Content */}
       <SidebarContent className="flex flex-col gap-4 p-4">
         <SidebarGroup className="flex flex-col gap-3">
-          <Button  className="w-full justify-start gap-2">
+          <Button
+            onClick={() => setSidebar("add-product")}
+            className="w-full justify-start gap-2"
+          >
             <Plus className="w-4 h-4" />
             Add Product
           </Button>
-          <Button className="w-full justify-start gap-2">
+          <Button
+            onClick={() => setSidebar("see-orders")}
+            className="w-full justify-start gap-2"
+          >
             <ListOrdered className="w-4 h-4" />
             See Orders
           </Button>
-          <Button className="w-full justify-start gap-2">
+          <Button
+            onClick={() => setSidebar("see-products")}
+            className="w-full justify-start gap-2"
+          >
             <Package className="w-4 h-4" />
             See Products
           </Button>
         </SidebarGroup>
 
         <SidebarGroup className="flex flex-col gap-3">
-          <Button className="w-full justify-start gap-2">
+          <Button
+            onClick={() => setSidebar("completed-orders")}
+            className="w-full justify-start gap-2"
+          >
             <CheckCircle className="w-4 h-4" />
             Completed Orders
           </Button>
-          <Button className="w-full justify-start gap-2">
+          <Button
+            onClick={() => setSidebar("canceled-orders")}
+            className="w-full justify-start gap-2"
+          >
             <XCircle className="w-4 h-4" />
             Canceled Orders
           </Button>
         </SidebarGroup>
 
         <SidebarGroup className="flex flex-col gap-3">
-          <Button className="w-full justify-start gap-2">
+          <Button
+            onClick={() => setSidebar("logs")}
+            className="w-full justify-start gap-2"
+          >
             <FileText className="w-4 h-4" />
             Logs
           </Button>
