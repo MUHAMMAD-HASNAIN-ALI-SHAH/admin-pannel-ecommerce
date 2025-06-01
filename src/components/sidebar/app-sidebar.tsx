@@ -22,8 +22,6 @@ import { useSidebarStore } from "@/store/useSidebar";
 export function AppSidebar() {
   const { setSidebar, sidebarItem } = useSidebarStore();
 
-  console.log("Current Sidebar Item:", sidebarItem);
-
   return (
     <Sidebar className="h-screen border-r shadow-sm">
       {/* Header */}
@@ -42,11 +40,18 @@ export function AppSidebar() {
             Add Product
           </Button>
           <Button
-            onClick={() => setSidebar("see-orders")}
+            onClick={() => setSidebar("new-orders")}
             className="w-full justify-start gap-2"
           >
             <ListOrdered className="w-4 h-4" />
-            See Orders
+            New Orders
+          </Button>
+          <Button
+            onClick={() => setSidebar("placed-orders")}
+            className="w-full justify-start gap-2"
+          >
+            <ListOrdered className="w-4 h-4" />
+            Placed Orders
           </Button>
           <Button
             onClick={() => setSidebar("see-products")}

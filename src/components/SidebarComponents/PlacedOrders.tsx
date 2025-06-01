@@ -8,6 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
 
 const orders = [
   {
@@ -15,51 +16,46 @@ const orders = [
     userId: "USR123",
     productId: "PRD001",
     orderDate: "2025-05-01",
-    deliveryDate: "2025-05-05",
   },
   {
     invoiceId: "INV002",
     userId: "USR456",
     productId: "PRD002",
     orderDate: "2025-05-02",
-    deliveryDate: "2025-05-06",
   },
   {
     invoiceId: "INV003",
     userId: "USR789",
     productId: "PRD003",
     orderDate: "2025-05-03",
-    deliveryDate: "2025-05-07",
   },
   {
     invoiceId: "INV004",
     userId: "USR321",
     productId: "PRD004",
     orderDate: "2025-05-04",
-    deliveryDate: "2025-05-08",
   },
   {
     invoiceId: "INV005",
     userId: "USR654",
     productId: "PRD005",
     orderDate: "2025-05-05",
-    deliveryDate: "2025-05-09",
   },
 ];
 
-export function CompletedOrders() {
+export function PlacedOrders() {
   return (
     <div className="px-5 py-3">
-      <h1 className="font-bold text-2xl py-3">Completed Orders</h1>
+      <h1 className="font-bold text-2xl py-3">Placed Orders</h1>
       <Table>
-        <TableCaption>A list of all completed product orders.</TableCaption>
+        <TableCaption>A list of all product orders.</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead>Invoice ID</TableHead>
             <TableHead>User ID</TableHead>
             <TableHead>Product ID</TableHead>
             <TableHead>Order Date</TableHead>
-            <TableHead>Delivery Date</TableHead>
+            <TableHead className="text-center">Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -69,7 +65,9 @@ export function CompletedOrders() {
               <TableCell>{order.userId}</TableCell>
               <TableCell>{order.productId}</TableCell>
               <TableCell>{order.orderDate}</TableCell>
-              <TableCell>{order.deliveryDate}</TableCell>
+              <TableCell className="flex justify-center gap-3">
+                <Button size="sm">Delivered</Button>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
